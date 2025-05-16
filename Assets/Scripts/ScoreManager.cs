@@ -44,6 +44,7 @@ public class ScoreManager : MonoBehaviour
 
 	public void TakeDamage()
 	{
+		
 		lives--;
 		livesText.text = "Lives: " + lives;
 		Debug.Log("Lives: " + lives);

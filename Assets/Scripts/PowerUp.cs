@@ -11,6 +11,7 @@ public class PowerUp : MonoBehaviour
 		{
 			case PowerType.Shield:
 				Debug.Log("Shield Activated");
+				GameManager.Instance.shieldActive = true;
 				break;
 			case PowerType.Speed:
 				GameManager.Instance.gameSpeed += 2f;

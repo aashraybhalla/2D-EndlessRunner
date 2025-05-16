@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 		if (isGrounded)
 			jumpCount = 0;
 
-		if (Input.GetMouseButtonDown(0) && jumpCount < 2)
+		if (Input.GetMouseButtonDown(0) && jumpCount < 1)
 		{
 			rb.velocity = new Vector2(rb.velocity.x, 0f);
 			rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -43,9 +43,13 @@ public class PlayerController : MonoBehaviour
 	{
 		if (other.collider.CompareTag("Obstacle"))
 		{
-			ScoreManager.Instance.TakeDamage();
-			// Optional: Add a small bounce effect
-			rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+			if (!GameManager.Instance.shieldActive)
+			{
+				ScoreManager.Instance.TakeDamage();
+				// Optional: Add a small bounce effect
+				rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+			}
+			
 			
 			Destroy(other.gameObject);
 		}
